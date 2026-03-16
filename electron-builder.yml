@@ -1,0 +1,59 @@
+directories:
+  buildResources: buildResources
+  output: dist
+extraResources: ["tools", "external-resources", 'firmwares', "statics", "drivers"]
+
+appId: 'openblock.cc.openblock-agent'
+productName: "Blockzie Agent"
+publish: # empty provider list = don't publish
+artifactName: "Blockzie-Agent_v${version}_${os}_${arch}.${ext}"
+
+mac:
+  category: public.app-category.education
+  entitlements: buildResources/entitlements.mac.plist
+  gatekeeperAssess: true
+  hardenedRuntime: true
+  icon: buildResources/OpenblockAgent.icns
+  provisioningProfile: embedded.provisionprofile
+  target:
+    - dmg
+    # - mas
+dmg:
+  title: "Blockzie Link ${version}"
+# mas:
+#   category: public.app-category.education
+#   entitlements: buildResources/entitlements.mas.plist
+#   entitlementsInherit: buildResources/entitlements.mas.inherit.plist
+#   hardenedRuntime: false
+#   icon: buildResources/OpenblockAgent.icns
+
+win:
+  icon: buildResources/OpenblockAgent.ico
+  target:
+    # - appx
+    - nsis
+# appx:
+#   identityName: OpenBlock.OpenblockAgent
+#   publisherDisplayName: "OpenBlock"
+#   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
+#   artifactName: "OpenBlock Agent ${version}.${ext}"
+nsis:
+  oneClick: false # allow user to choose per-user or per-machine
+  allowToChangeInstallationDirectory: true
+  include: buildResources/installer.nsh
+#   license: LICENSE
+
+linux:
+  category: Education
+  icon: buildResources/linux
+  desktop:
+    - Encoding: UTF-8
+    - Name: BlockzieAgent
+    - Icon: blockzie-agent
+    - Type: Application
+    - Terminal: false
+  target:
+    - deb
+
+deb:
+  depends: ["libnotify4", "libxtst6", "libnss3"]

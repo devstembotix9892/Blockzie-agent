@@ -1,0 +1,15 @@
+# npm file
+node_modules/
+
+# Temporary resource
+/external-resources
+/tools
+/firmwares
+/drivers
+/translations
+
+# Build dist
+dist/
+
+# Mac
+.DS_Store
