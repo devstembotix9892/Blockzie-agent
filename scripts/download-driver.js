@@ -4,7 +4,7 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs');
 
-const user = 'devstemborix9892';
+const user = 'devstembotix9892';
 const repo = 'blockzie-driver';
 const outputdir = path.join(__dirname, '../drivers');
 const leaveZipped = false;
